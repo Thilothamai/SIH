@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training Centres</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .training-center-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .contact-button,
+      .locate-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        color: #fff;
+      }
+
+      .contact-button {
+        background-color: #3498db;
+      }
+
+      .locate-button {
+        background-color: #2ecc71;
+      }
+
+      #map {
+        display: none;
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+      }
+
+      #locationTag {
+        margin-top: 10px;
+      }
+    </style>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <h1>Training Centres</h1>
+
+    <div id="trainingCenters"></div>
+
+    <div id="map"></div>
+
+    <!-- Add an element to display the location information -->
+    <div id="locationTag"></div>
+
+    <script>
+      // Sample dummy data
+      const trainingCentersData = [
+        {
+          instituteName: "Chennai",
+          contactDetails: {
+            email: "info@center1.com",
+            phone: "123-456-7890",
+          },
+        },
+        {
+          instituteName: "Madurai",
+          contactDetails: {
+            email: "info@center2.com",
+            phone: "987-654-3210",
+          },
+        },
+        // Add more training centers as needed
+      ];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        displayTrainingCenters(trainingCentersData);
+      });
+
+      function displayTrainingCenters(trainingCenters) {
+        const trainingCentersContainer =
+          document.getElementById("trainingCenters");
+        trainingCentersContainer.innerHTML = "";
+
+        trainingCenters.forEach((center) => {
+          const cardDiv = document.createElement("div");
+          cardDiv.className = "training-center-card";
+
+          cardDiv.innerHTML = `
+                    <h3>${center.instituteName}</h3>
+                    <p>Email: ${center.contactDetails.email}</p>
+                    <p>Phone: ${center.contactDetails.phone}</p>
+                    <button class="contact-button" onclick="contact('${center.contactDetails.email}')">Contact</button>
+                    <button class="locate-button" onclick="locate('${center.instituteName}')">Locate</button>
+                `;
+
+          trainingCentersContainer.appendChild(cardDiv);
+        });
+      }
+
+      function contact(email) {
+        // Display contact details in an alert
+        alert(`Contact Email: ${email}`);
+      }
+
+      function locate(instituteName) {
+        const mapContainer = document.getElementById("map");
+        mapContainer.style.display = "block";
+
+        const map = L.map(mapContainer).setView([0, 0], 15);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(map);
+
+        // Use the OpenStreetMap Nominatim service for geocoding
+        fetch(
+          "https://nominatim.openstreetmap.org/search?q=${instituteName}&format=json"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Nominatim response:", data); // Log the response to the console
+
+            if (data.length > 0) {
+              const location = data[0];
+              map.setView([location.lat, location.lon], 15);
+
+              const marker = L.marker([location.lat, location.lon]).addTo(map);
+              marker.bindPopup(instituteName).openPopup();
+
+              // Update the location tag with the address from the geocoded result
+              document.getElementById("locationTag").innerText =
+                location.display_name;
+            } else {
+              console.error("Geocoding result not found.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error during geocoding:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

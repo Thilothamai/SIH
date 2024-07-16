@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Coaching Centers</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color:red;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+  <select class="vis" id="colorFilterSelect">
+    <option value="normal">Normal Vision</option>
+    <option value="deuteranopia">Deuteranopia</option>
+    <option value="protanopia">Protanopia</option>
+    <option value="tritanopia">Tritanopia</option>
+</select>
+
+<h1>Coaching Centers</h1>
+
+<div id="coachingCentersList"></div>
+
+<script>
+    // Sample JSON data for coaching centers
+
+    var coachingCenters = [
+    {
+      "name": "Made Easy",
+      "cities": ["Delhi", "Hyderabad", "Bhopal", "Lucknow", "Jaipur", "Kolkata", "Chandigarh", "Pune", "Bhubaneswar"],
+      "website": "https://www.madeeasy.in/"
+    },
+    {
+      "name": "GATE Forum",
+      "cities": ["Delhi", "Mumbai", "Bangalore", "Chennai", "Kolkata", "Pune", "Hyderabad", "Lucknow"],
+      "website": "https://gateforum.com/"
+    },
+    {
+      "name": "IES Master",
+      "cities": ["Delhi", "Noida", "Lucknow", "Bhopal", "Patna", "Pune", "Bhubaneswar", "Jaipur"],
+      "website": "https://iesmaster.org/"
+    },
+    {
+      "name": "Vani Institute",
+      "cities": ["Bangalore", "Chennai", "Hyderabad", "Pune", "Kolkata", "Bhopal", "Visakhapatnam", "Jaipur"],
+      "website": "https://vaniinstitute.com/"
+    },
+    {
+      "name": "ACE Engineering Academy",
+      "cities": ["Hyderabad", "Delhi", "Pune", "Bhubaneswar", "Vijayawada", "Bengaluru", "Chennai", "Lucknow"],
+      "website": "https://www.aceenggacademy.com/"
+    },
+    {
+      "name": "Career Avenues",
+      "cities": ["Delhi", "Kolkata", "Lucknow", "Patna", "Bhubaneswar", "Ranchi", "Varanasi"],
+      "website": "https://www.careeravenues.in/"
+    },
+    {
+      "name": "Engineers Academy",
+      "cities": ["Jaipur", "Delhi", "Lucknow", "Bhopal", "Patna", "Chandigarh", "Indore"],
+      "website": "https://www.engineersacademy.org/"
+    },
+    {
+      "name": "Brilliant Tutorials",
+      "cities": ["Chennai", "Delhi", "Mumbai", "Bangalore", "Kolkata", "Hyderabad", "Pune"],
+      "website": "https://www.brilliant-tutorials.com/"
+    },
+    {
+      "name": "Gate Academy",
+      "cities": ["Bangalore", "Pune", "Delhi", "Kolkata", "Hyderabad", "Lucknow", "Bhopal"],
+      "website": "https://www.gateacademy.co.in/"
+    },
+    {
+      "name": "TIME (Triumphant Institute of Management Education)",
+      "cities": ["Delhi", "Mumbai", "Bangalore", "Chennai", "Kolkata", "Pune", "Hyderabad"],
+      "website": "https://www.time4education.com/"
+    }
+  ]
+
+    // Function to display coaching centers on the HTML page
+    function displayCoachingCenters() {
+        var coachingCentersListDiv = document.getElementById("coachingCentersList");
+        coachingCentersListDiv.innerHTML = "";
+
+        coachingCenters.forEach(function (center) {
+            var centerHtml = "<li><strong>" + center.name + "</strong> - Location: " + center.cities +
+                "<br>Courses offered: " + center.cities.join(", ") + "</li>";
+            coachingCentersListDiv.innerHTML += centerHtml;
+        });
+    }
+
+    displayCoachingCenters()
+
+    // Call the function to display coaching centers
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const colorFilterSelect = document.getElementById('colorFilterSelect');
+      const colorFilters = document.getElementById('colorFilters');
+      const elementsToFilter = document.querySelectorAll('.filtered');
+
+      colorFilterSelect.addEventListener('change', function () {
+          const selectedFilter = colorFilterSelect.value;
+          elementsToFilter.forEach(function (element) {
+              element.style.filter = `url(#${selectedFilter})`;
+              let body = document.querySelector("body").setAttribute("style",`filter : url(#${selectedFilter}) `)
+          });
+      });
+  });
+</script> 
+
+</body>
+</html>

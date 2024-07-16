@@ -1,0 +1,47 @@
+@import "./common.css";
+
+main {
+    display: flex;
+    flex-direction: column;
+    column-gap: 25px;
+    align-items: center;
+    padding-block: 100px;
+}
+
+.box {
+    display: flex;
+    row-gap: 25px;
+    box-shadow: 0px 0px 5px;
+    width: 800px;
+    height: fit-content;
+    border-radius: 5px;
+    padding-block: 25px;
+    padding-inline: 25px;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    justify-content: center;
+}
+
+.container { 
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    align-items: center;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding-inline: 25px;
+    padding-block: 10px;
+    font-size: inherit;
+    border-radius: 5px;
+}
+
+.error p {
+    color: red;
+  }
+
+.hide {
+    display: none !important;
+  }

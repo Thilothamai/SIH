@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style/home.css">
+    <script src="https://kit.fontawesome.com/ba5854dd19.js" crossorigin="anonymous"></script>
+
+    
+</head>
+
+<body>
+
+    <div>
+        <div id="textSizeControls">
+            <button onclick="resizeText('small')">A-</button>
+            <button onclick="resizeText('medium')">A</button>
+            <button onclick="resizeText('large')">A+</button>
+            <button onclick="toggleReading()" id="speakButton">Speak</button>
+        </div>
+    </div>
+
+    <script>
+        function resizeText(size) {
+            const textElement = document.querySelector('body');
+
+            switch (size) {
+                case 'small':
+                    textElement.style.fontSize = '12px';
+                    break;
+                case 'medium':
+                    textElement.style.fontSize = '16px';
+                    break;
+                case 'large':
+                    textElement.style.fontSize = '20px';
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    
+
+    <header></header>
+
+    <div id="google_translate_element"></div>
+        <span>
+            <script type="text/javascript">
+                //<![CDATA[
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'de', includedLanguages: 'en,ta,hi', autoDisplay: false,
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                    }, 'google_translate_element');
+                }
+                //]]>
+            </script>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </span>
+
+        <select class="vis" id="colorFilterSelect">
+            <option value="normal">Normal Vision</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+        </select>
+
+    <main class="filtered">
+        <section class="mainblock">
+            <section class="block">
+                <p class="boxdesign">Looking for job ?</p>
+
+                <div>
+                    <h1>Find your <span>dream job</span> and</h1>
+                    <h1>secure your <span>future<span></h1>
+                </div>
+
+                <div>
+                    <h3>Lets start joining us and get your job</h3>
+                    <p><span>10,000</span> over jobs</p>
+                </div>
+            </section>
+
+            <section>
+                <img src="/imgs/home_page_img.webp" alt="">
+            </section>
+        </section>
+
+        <h2>Our <span>Sponsors</span></h2>
+
+        <section class="sliderbox">
+            <i class="fa-solid fa-less-than"></i>
+            <section class="slider">
+                <img src="/imgs/google.webp" alt="">
+                <img src="/imgs/amazon.png" alt="">
+                <img src="/imgs/meta.jpg" alt="">
+                <img src="/imgs/microsoft.png" alt="">
+                <img src="/imgs/netflix.png" alt="">
+                <img src="/imgs/uber.png" alt="">
+            </section>
+            <i class="fa-solid fa-greater-than"></i>
+        </section>
+
+    </main>
+
+    <footer>
+        <i class="fa-solid fa-arrow-up"></i>
+    </footer>
+
+    <script src="/public/script/home.js" type="module"></script>
+
+    <script>
+        var isReading = false;
+
+        function toggleReading() {
+            const test = document.querySelector("body");
+            const button = document.getElementById("speakButton");
+            
+            // Toggle the "clicked" class on the button
+            button.classList.toggle("clicked");
+
+            // Change the button color based on the "clicked" class
+            if (button.classList.contains("clicked")) {
+                button.style.backgroundColor = "red"; // Change to your desired color
+                startReading(test);
+            } else {
+                button.style.backgroundColor = ""; // Reset to the default color
+                stopReading();
+            }
+        }
+
+        function startReading(element) {
+            // This handler will be executed only once when the cursor
+            // is moved over the unordered list
+            element.addEventListener(
+                "click",
+                (event) => {
+                    // Split the text content into words
+                    const words = event.target.textContent.trim().split(' ');
+
+                    // Read each word
+                    words.forEach((word) => {
+                        speakText(word);
+                    });
+
+                    // Remove the event listener after reading once
+                    element.removeEventListener("click", arguments.callee);
+                },
+                false,
+            );
+
+            isReading = true;
+        }
+
+        function stopReading() {
+            isReading = false;
+            window.speechSynthesis.cancel();
+        }
+
+        function speakText(text) {
+            var utterance = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const colorFilterSelect = document.getElementById('colorFilterSelect');
+        const colorFilters = document.getElementById('colorFilters');
+        const elementsToFilter = document.querySelectorAll('.filtered');
+
+        colorFilterSelect.addEventListener('change', function () {
+            const selectedFilter = colorFilterSelect.value;
+            elementsToFilter.forEach(function (element) {
+                element.style.filter = `url(#${selectedFilter})`;
+                let body = document.querySelector("body").setAttribute("style",`filter : url(#${selectedFilter}) `)
+            });
+        });
+    });
+</script> 
+
+</body>
+<svg id="colorFilters">
+    <!-- Your existing filters here -->
+    
+      <filter id="achromatopsia">
+
+        <feColorMatrix values="0.213  0.715  0.072  0.000  0.000
+                               0.213  0.715  0.072  0.000  0.000
+                               0.213  0.715  0.072  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="deuteranopia">
+        <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000
+                               0.280  0.673  0.047  0.000  0.000
+                              -0.012  0.043  0.969  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="protanopia">
+        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000
+                               0.115  0.786  0.099  0.000  0.000
+                              -0.004 -0.048  1.052  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="tritanopia">
+        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000
+                              -0.078  0.931  0.148  0.000  0.000
+                               0.005  0.691  0.304  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+</svg>
+</html>

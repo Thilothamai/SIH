@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <script
+      src="https://kit.fontawesome.com/ba5854dd19.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="/public/style/signin.css" />
+  </head>
+
+  <body>
+    <main>
+      <section clas="registerlink">
+        <p>
+          Job notification for Teacher recruitment <a href="/signin">Apply</a>
+        </p>
+      </section>
+
+      <section class="loginbox">
+        <h1>Sign In</h1>
+
+        <div class="email">
+          <h4>Email</h4>
+          <input type="email" />
+        </div>
+
+        <div class="password">
+          <h4>Password</h4>
+          <div>
+            <input type="password" />
+            <i class="fa-regular fa-eye"></i>
+          </div>
+        </div>
+
+        <div class="error hide">
+          <p>Invalid Email or password</p>
+        </div>
+
+        <button>Sign In <i class="fa-solid fa-arrow-right"></i></button>
+
+        <nav>
+          <a href="/forget">Forget pasword ?</a>
+          <a href="/signup">Sign up</a>
+        </nav>
+      </section>
+    </main>
+
+    <script src="/public/script/signin.js" type="module"></script>
+  </body>
+</html>

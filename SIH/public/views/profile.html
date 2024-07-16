@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style/profile.css">
+    <script src="https://kit.fontawesome.com/ba5854dd19.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header></header>
+    
+    <div id="google_translate_element"></div>
+        <span>
+            <script type="text/javascript">
+                //<![CDATA[
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'de', includedLanguages: 'en,ta,hi', autoDisplay: false,
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                    }, 'google_translate_element');
+                }
+                //]]>
+            </script>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </span>
+
+        <select class="vis" id="colorFilterSelect">
+            <option value="normal">Normal Vision</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+        </select>
+
+    <main class="filtered">
+
+        <section class="container">
+
+            <h2>Personal Details</h2>
+
+            <section class="personal_details_section1 box"></section>
+
+            <section class="personal_details_section2 box"></section>
+
+            <div class="error hide">
+                <p>Invalid data</p>
+            </div>
+
+            <div class="buttons">
+                <button class="submit">Submit <i class="fa-solid fa-arrow-right"></i></button>
+                <a href="/disabilitydata"><button>Next <i class="fa-solid fa-arrow-right"></i></button></a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="/public/script/profile.js" type="module"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const colorFilterSelect = document.getElementById('colorFilterSelect');
+            const colorFilters = document.getElementById('colorFilters');
+            const elementsToFilter = document.querySelectorAll('.filtered');
+    
+            colorFilterSelect.addEventListener('change', function () {
+                const selectedFilter = colorFilterSelect.value;
+                elementsToFilter.forEach(function (element) {
+                    element.style.filter = `url(#${selectedFilter})`;
+                    let body = document.querySelector("body").setAttribute("style",`filter : url(#${selectedFilter}) `)
+                });
+            });
+        });
+    </script> 
+
+</body>
+<svg id="colorFilters">
+    <!-- Your existing filters here -->
+    
+      <filter id="achromatopsia">
+
+        <feColorMatrix values="0.213  0.715  0.072  0.000  0.000
+                               0.213  0.715  0.072  0.000  0.000
+                               0.213  0.715  0.072  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="deuteranopia">
+        <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000
+                               0.280  0.673  0.047  0.000  0.000
+                              -0.012  0.043  0.969  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="protanopia">
+        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000
+                               0.115  0.786  0.099  0.000  0.000
+                              -0.004 -0.048  1.052  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+      <filter id="tritanopia">
+        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000
+                              -0.078  0.931  0.148  0.000  0.000
+                               0.005  0.691  0.304  0.000  0.000
+                               0.000  0.000  0.000  1.000  0.000">
+        </feColorMatrix>
+      </filter>
+</svg>
+</html>

@@ -1,0 +1,9 @@
+@import "./training.css";
+
+main {
+    display: flex;
+    column-gap: 50px;
+    justify-content: center;
+    padding-inline: 100px;
+    flex-wrap: wrap;
+  }

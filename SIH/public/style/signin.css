@@ -1,0 +1,12 @@
+@import "./login.css";
+
+
+main { 
+  display: flex;
+  column-gap: 100px;
+}
+
+p a { 
+  text-decoration: underline;
+  color: blue;
+}

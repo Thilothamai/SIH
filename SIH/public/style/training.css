@@ -1,0 +1,72 @@
+@import "./common.css";
+
+.departmentblock div{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+}
+
+.departmentblock{
+  width: 400px;
+  height: 90vh;
+  background-color:antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  top: 10%;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 50px;
+}
+
+.container div {
+  display: flex;
+  column-gap: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items:flex-start;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.options div {
+  display: flex;
+}
+
+main {
+  display: flex;
+  column-gap: 50px;
+}
+
+select {
+  width: 300px;
+}
+
+.questionsblock {
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+  align-items: center;
+  padding-block: 100px;
+}
+
+.scorehide {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+}

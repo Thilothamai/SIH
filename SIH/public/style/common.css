@@ -1,0 +1,195 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    text-align: center;
+    font-size: larger;
+    font-family: sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    font-weight: bolder;
+  }
+  
+  header {
+    padding-inline: 50px;
+    position: sticky;
+    top: 0%;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0px 0px 5px;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .mainheader {
+    display: flex;
+    column-gap: 25px;
+    align-items: center;
+  }
+  
+  header nav {
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  header i {
+    font-size: 30px;
+  }
+  
+  .active{
+    color: red;
+  }
+  
+  input,select {
+    width: 200px;
+    padding-inline: 10px;
+    padding-block: 5px;
+    font-size: medium;
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  
+  button {
+    font-size: inherit;
+    background-color:black;
+    color: white;
+    padding-block: 5px;
+    padding-inline: 10px;
+    box-shadow: 0px 0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color:white;
+    color: black;
+    box-shadow: 0px 0px 2.5px;
+  }
+
+  span {
+    color: red;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    width: 250px;
+    padding-block: 10px;
+    padding-inline: 25px;
+    box-shadow: 0px 0px 5px;
+    border-radius: 10px;
+    position: fixed;
+    background-color: white;
+    top: 10%;
+    right: 10px;
+    text-align: justify;
+  }
+
+  .user a {
+    width: 100%;
+    padding-block: 5px;
+    cursor: pointer;
+  }
+
+  .user i {
+    font-size: inherit;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  .jobtype {
+    width: 200px;
+    height: fit-content;
+    z-index: 1;
+    position: fixed;
+    top: 10%;
+    right:30%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-block: 25px;
+    background-color: white;
+  }
+
+
+  .searchblock {
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    font-size: inherit;
+    padding-inline: 10px;
+  }
+  
+  .searchblock input {
+    font-size: inherit;
+    padding: 10px;
+    width: 400px;
+    border-radius: 10px;
+  }
+  
+  .searchblock div {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .searchblock div .fa-magnifying-glass {
+    font-size: inherit;
+    position: absolute;
+    right: -30px;
+    font-size: 25px;
+  }
+
+  .searchblock div .fa-microphone {
+    font-size: inherit;
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+  }
+
+  .user h4 {
+    cursor: pointer;
+  }
+
+  #textSizeControls {
+    position: fixed;
+    top: 15%;
+}
+
+#textSizeControls button{
+  font-size: small;
+  font-weight: bold;
+}
+
+svg {
+  height: 0%;
+  display: none;
+}

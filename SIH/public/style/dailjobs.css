@@ -1,0 +1,72 @@
+@import "./common.css";
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px;
+  width: 1000px;
+  height: 400px;
+  border-radius: 10px;
+  padding-block: 50px;
+  padding-inline: 50px;
+  position: relative;
+}
+
+.box div {
+  text-align: justify;
+  display: flex;
+  column-gap: 10px;
+}
+
+.apply {
+  display: flex;
+  justify-content: flex-end;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 25px;
+  padding-inline: 100px;
+  padding-block: 100px;
+}
+
+
+.searchblock {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  font-size: inherit;
+  padding-block: 25px;
+  padding-inline: 25px;
+  position: fixed;
+  top: 0%;
+  left: 10%;
+  z-index: 1;
+}
+
+.searchblock input {
+  font-size: inherit;
+  padding: 10px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.searchblock i {
+  font-size: 25px;
+}
+
+.searchblock div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchblock div i {
+  font-size: inherit;
+  position: absolute;
+  right: 5px;
+}
